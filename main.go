@@ -1,49 +1,49 @@
 package main
 
 import (
-	"fmt"
-	"os"
+  "fmt"
+  "os"
 
-	"github.com/ArakiTakaki/scrapbox_cli/dao"
-	"github.com/sahilm/fuzzy"
+  "github.com/ArakiTakaki/scrapbox_cli/dao"
+  "github.com/sahilm/fuzzy"
 )
 
 func main() {
-	channel := make(chan dao.Page)
-	go dao.Say("teamlab-frontend", channel)
-	b := <-channel
-	fmt.Println(b.Pages[0].Title)
-	for _, v := range b.Pages {
-		fmt.Println(v.Title)
-	}
+  channel := make(chan dao.Page)
+  go dao.Say("araki-rust", channel)
+  b := <-channel
+  fmt.Println(b.Pages[0].Title)
+  for _, v := range b.Pages {
+    fmt.Println(v.Title)
+  }
 
-	exampleFizzy()
+  // exampleFizzy()
 
-	os.Exit(0)
+  os.Exit(0)
 }
 
 func exampleFizzy() {
-	const bold = "\033[1m%s\033[0m"
-	pattern := "mnr"
-	data := []string{"game.cpp", "moduleNameResolver.ts", "my name is_Ramsey"}
-	matches := fuzzy.Find(pattern, data)
-	for _, match := range matches {
-		for i := 0; i < len(match.Str); i++ {
-			if contains(i, match.MatchedIndexes) {
-				fmt.Print(fmt.Sprintf(bold, string(match.Str[i])))
-			} else {
-				fmt.Print(string(match.Str[i]))
-			}
-		}
-		fmt.Println()
-	}
+  const bold = "\033[1m%s\033[0m"
+  pattern := "mnres"
+  data := []string{"game.cpp", "moduleNameResolver.ts", "my name is_Ramsey"}
+  matches := fuzzy.Find(pattern, data)
+  for _, match := range matches {
+    for i := 0; i < len(match.Str); i++ {
+      if contains(i, match.MatchedIndexes) {
+        fmt.Print(fmt.Sprintf(bold, string(match.Str[i])))
+      } else {
+        fmt.Print(string(match.Str[i]))
+      }
+    }
+    fmt.Println()
+  }
 }
 
 func contains(needle int, haystack []int) bool {
-	for _, i := range haystack {
-		if needle == i {
-			return true
-		}
-	}
-	return false
+  for _, i := range haystack {
+    if needle == i {
+      return true
+    }
+  }
+  return false
 }

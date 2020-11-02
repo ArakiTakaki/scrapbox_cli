@@ -15,6 +15,7 @@ type Page struct {
 type User struct {
   ID string `json:"id"`
 }
+// TODO bookに治す
 type Article struct {
   Id                string   `json:"id"`
   Title             string   `json:"title"`
@@ -30,8 +31,8 @@ type Article struct {
   SnapshotCreatedAt int      `json:"snapshotCreated"`
 }
 
-func Say(article string, c chan Page) {
-  url := "https://scrapbox.io/api/pages/" + article + "/"
+func Say(book string, c chan Page) {
+  url := "https://scrapbox.io/api/pages/" + book + "/"
   resp, err := http.Get(url)
   if err != nil {
     panic(err)
@@ -45,5 +46,3 @@ func Say(article string, c chan Page) {
   if err := json.Unmarshal(byteArray, &page); err != nil {
     panic(err)
   }
-  c <- page
-}
