@@ -17,6 +17,12 @@ func main() {
 		fmt.Println(v.Title)
 	}
 
+	exampleFizzy()
+
+	os.Exit(0)
+}
+
+func exampleFizzy() {
 	const bold = "\033[1m%s\033[0m"
 	pattern := "mnr"
 	data := []string{"game.cpp", "moduleNameResolver.ts", "my name is_Ramsey"}
@@ -31,8 +37,6 @@ func main() {
 		}
 		fmt.Println()
 	}
-
-	os.Exit(0)
 }
 
 func contains(needle int, haystack []int) bool {
