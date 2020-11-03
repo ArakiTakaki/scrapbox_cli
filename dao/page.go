@@ -37,7 +37,7 @@ type Article struct {
 
 // Say hogehoge
 func Say(book string) (Page, error) {
-	url := "https://srapbox.io/api/pages/" + book + "/"
+	url := "https://scrapbox.io/api/pages/" + book + "/"
 
 	resp, err := http.Get(url)
 	if err != nil {
@@ -46,6 +46,7 @@ func Say(book string) (Page, error) {
 	defer resp.Body.Close()
 	byteArray, err := ioutil.ReadAll(resp.Body)
 	var page Page
+
 	if err := json.Unmarshal(byteArray, &page); err != nil {
 		panic(err)
 	}

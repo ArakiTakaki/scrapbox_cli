@@ -14,6 +14,7 @@ func main() {
 
 	b, err := dao.Say("araki-rust")
 	if err != nil {
+		fmt.Println(err)
 		os.Exit(0)
 	}
 	fmt.Println(b.Pages[0].Title)
